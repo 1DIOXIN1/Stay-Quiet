@@ -1,4 +1,0 @@
-repository "Stay Quiet@Pampers_Gaming_Entertainment@cloud"
-  path "/"
-    br "/main"
-    co "/main"
