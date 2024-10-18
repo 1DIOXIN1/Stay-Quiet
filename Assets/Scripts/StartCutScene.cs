@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class Test : MonoBehaviour
+public class StartCutScene : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log("123123123");
+        
     }
 
     // Update is called once per frame
