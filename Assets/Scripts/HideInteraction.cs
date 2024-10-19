@@ -50,42 +50,46 @@ private void Start()
 
 void EnterHiding()
 {
-    if (_controller != null)
+    if (_controller != null && _controller.enabled)
     {
-        _controller.enabled = false; // Отключаем контроллер перед перемещением
+        _controller.enabled = false;  // Отключаем контроллер перед перемещением
     }
 
-    _player.transform.position = _hidingSpot.position; // Перемещаем игрока
+    // Перемещаем игрока в укрытие
+    _player.transform.position = _hidingSpot.position;
+    _isHiding = true;
+
+    // Отключаем видимость игрока
+    _player.GetComponent<MeshRenderer>().enabled = false;
 
     if (_controller != null)
     {
-        _controller.enabled = true; // Включаем контроллер обратно
+        _controller.enabled = true;  // Включаем контроллер после перемещения
     }
-    _player.GetComponent<MeshRenderer>().enabled = false; // Отключаем видимость
+
+    Debug.Log("Игрок спрятался");
 }
 
-
 void ExitHiding()
+{
+    if (_controller != null && _controller.enabled)
     {
-        // Отключаем CharacterController перед перемещением
-        if (_controller != null)
-        {
-            _controller.enabled = false;
-        }
-
-        // Возвращаем игрока на исходную позицию (например, рядом со шкафом)
-        _player.transform.position = transform.position + new Vector3(1, 0, 0);
-        _isHiding = false;
-
-        // Включаем видимость игрока
-        _player.GetComponent<MeshRenderer>().enabled = true;
-
-        // Включаем CharacterController обратно после перемещения
-        if (_controller != null)
-        {
-            _controller.enabled = true;
-        }
-
-        Debug.Log("Игрок вышел из укрытия");
+        _controller.enabled = false;  // Отключаем контроллер перед перемещением
     }
+
+    // Возвращаем игрока на исходную позицию
+    _player.transform.position = transform.position + new Vector3(1, 0, 0);
+    _isHiding = false;
+
+    // Включаем видимость игрока
+    _player.GetComponent<MeshRenderer>().enabled = true;
+
+    if (_controller != null)
+    {
+        _controller.enabled = true;  // Включаем контроллер после перемещения
+    }
+
+    Debug.Log("Игрок вышел из укрытия");
+}
+
 }
