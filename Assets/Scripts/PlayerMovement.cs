@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private float _moveSpeed = 1f;
+    private CharacterController _controller;
     void Start()
     {
-        Debug.Log("123");
+        _controller = GetComponent<CharacterController>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+        Vector3 directionMove = transform.right * horizontalInput + transform.forward * verticalInput;
+        _controller.Move(directionMove * _moveSpeed * Time.deltaTime);
     }
 }
