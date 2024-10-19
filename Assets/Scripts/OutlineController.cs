@@ -2,15 +2,28 @@ using UnityEngine;
 
 public class OutlineController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
+    [SerializeField] private Material firstOutlineMaterial;    // Материал с эффектом контура
+    [SerializeField] private Material secondOutlineMaterial; 
+
+    private Outline objectOutline;
+
     void Start()
     {
-        
+        // Сохраняем исходный материал объекта
+        objectOutline = GetComponent<Outline>();
     }
 
-    // Update is called once per frame
-    void Update()
+    // Метод для включения или отключения контура
+    public void SetOutline(bool isOutlined)
     {
-        
+        if (isOutlined)
+        {
+            objectOutline.enabled = true;  // 
+        }
+        else
+        {
+            objectOutline.enabled = false;  // 
+        }
     }
 }
