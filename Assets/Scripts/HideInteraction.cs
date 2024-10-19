@@ -2,20 +2,23 @@ using UnityEngine;
 
 public class HideInteraction : MonoBehaviour
 {
-    [SerializeField] private Transform hidingSpot; // Место, куда переместится игрок при прятании
-    private bool isInRange = false; // Находится ли игрок в зоне укрытия
-    private bool isHiding = false; // Спрятан ли игрок
-    private GameObject player; // Игрок
+    [SerializeField] private Transform _hidingSpot; // Место, куда переместится игрок при прятании
+    private bool _isInRange = false; // Находится ли игрок в зоне укрытия
+    private bool _isHiding = false; // Спрятан ли игрок
+    private GameObject _player; // Игрок
+
+    private CharacterController _controller;
 
 private void Start() 
 {
-    player = GameObject.FindWithTag("Player");
+    _player = GameObject.FindWithTag("Player");
+    _controller = _player.GetComponent<CharacterController>();
 }
     void Update()
     {
-        if (isInRange && Input.GetKeyDown(KeyCode.E))
+        if (_isInRange && Input.GetKeyDown(KeyCode.E))
         {
-            if (isHiding)
+            if (_isHiding)
             {
                 // Вылезаем из укрытия
                 ExitHiding();
@@ -32,7 +35,7 @@ private void Start()
     {
         if (other.CompareTag("Player"))
         {
-            isInRange = true; // Игрок вошел в зону укрытия
+            _isInRange = true; // Игрок вошел в зону укрытия
             
         }
     }
@@ -41,24 +44,48 @@ private void Start()
     {
         if (other.CompareTag("Player"))
         {
-            isInRange = false; // Игрок вышел из зоны укрытия
+            _isInRange = false; // Игрок вышел из зоны укрытия
         }
     }
 
-    void EnterHiding()
+void EnterHiding()
+{
+    if (_controller != null)
     {
-        player.transform.position = hidingSpot.position; // Перемещаем игрока на место укрытия
-        isHiding = true;
-        // Можно добавить логику для отключения видимости игрока
-        player.GetComponent<MeshRenderer>().enabled = false;
-        Debug.Log("123");
+        _controller.enabled = false; // Отключаем контроллер перед перемещением
     }
 
-    void ExitHiding()
+    _player.transform.position = _hidingSpot.position; // Перемещаем игрока
+
+    if (_controller != null)
     {
-        isHiding = false;
-        // Возвращаем игрока обратно (например, на исходную позицию перед шкафом)
-        player.transform.position = transform.position + new Vector3(1, 0, 0); // Возвращаем игрока чуть в сторону от шкафа
-        player.GetComponent<MeshRenderer>().enabled = true;
+        _controller.enabled = true; // Включаем контроллер обратно
+    }
+    _player.GetComponent<MeshRenderer>().enabled = false; // Отключаем видимость
+}
+
+
+void ExitHiding()
+    {
+        // Отключаем CharacterController перед перемещением
+        if (_controller != null)
+        {
+            _controller.enabled = false;
+        }
+
+        // Возвращаем игрока на исходную позицию (например, рядом со шкафом)
+        _player.transform.position = transform.position + new Vector3(1, 0, 0);
+        _isHiding = false;
+
+        // Включаем видимость игрока
+        _player.GetComponent<MeshRenderer>().enabled = true;
+
+        // Включаем CharacterController обратно после перемещения
+        if (_controller != null)
+        {
+            _controller.enabled = true;
+        }
+
+        Debug.Log("Игрок вышел из укрытия");
     }
 }
