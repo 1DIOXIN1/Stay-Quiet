@@ -1,8 +1,9 @@
+using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
 public class StartCutScene : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         
@@ -11,6 +12,9 @@ public class StartCutScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetButtonDown("Space"))
+        {
+            
+        }
     }
 }
