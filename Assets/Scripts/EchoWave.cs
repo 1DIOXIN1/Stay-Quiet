@@ -6,10 +6,17 @@ public class EchoWave : MonoBehaviour
     [SerializeField] private float _waveSpeed = 5f;
     [SerializeField] private float _maxScale = 10f;
     [SerializeField] private float _outlineDuration = 2f;  // Время, на которое остаётся контур
+    private bool _isPressed;
 
     void Update()
     {
-        if (transform.localScale.x < _maxScale)
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            _isPressed = true;
+        }
+        if(_isPressed)
+        {
+            if (transform.localScale.x < _maxScale)
         {
             transform.localScale += Vector3.one * _waveSpeed * Time.deltaTime;
             float currentWaveRadius = transform.localScale.x / 2;
@@ -27,8 +34,11 @@ public class EchoWave : MonoBehaviour
         }
         else
         {
+            _isPressed = false;
             StartCoroutine(DestroyObject(gameObject, _outlineDuration));
         }
+        }
+        
     }
 
     // Корутин для отключения контура
