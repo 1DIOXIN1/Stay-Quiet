@@ -10191,6 +10191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   echoWavePrefab: {fileID: 0}
   spawnPoint: {fileID: 0}
+  rendererData: {fileID: 0}
 --- !u!114 &133762261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13379,6 +13380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   echoWavePrefab: {fileID: 0}
   spawnPoint: {fileID: 0}
+  rendererData: {fileID: 0}
 --- !u!114 &433419628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14546,6 +14548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   echoWavePrefab: {fileID: 0}
   spawnPoint: {fileID: 0}
+  rendererData: {fileID: 0}
 --- !u!1 &688327294 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2874765826992384646, guid: 53afe1b45dd33724e841778e10a65658, type: 3}
@@ -16838,6 +16841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   echoWavePrefab: {fileID: 0}
   spawnPoint: {fileID: 0}
+  rendererData: {fileID: 0}
 --- !u!114 &884766185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42994,6 +42998,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   echoWavePrefab: {fileID: 0}
   spawnPoint: {fileID: 0}
+  rendererData: {fileID: 0}
 --- !u!114 &1866256643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43501,6 +43506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   echoWavePrefab: {fileID: 0}
   spawnPoint: {fileID: 0}
+  rendererData: {fileID: 0}
 --- !u!114 &2025140399
 MonoBehaviour:
   m_ObjectHideFlags: 0
