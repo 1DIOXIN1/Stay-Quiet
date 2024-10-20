@@ -17,7 +17,8 @@ GameObject:
   - component: {fileID: 7401951257899658820}
   - component: {fileID: 5801207477944468650}
   - component: {fileID: 2395917811791411927}
-  m_Layer: 0
+  - component: {fileID: 6730101549366812066}
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -34,7 +35,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.84, z: -0.22}
-  m_LocalScale: {x: 1, y: 1.45, z: 1}
+  m_LocalScale: {x: 1, y: 1.70838, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4432605793609331137}
@@ -180,7 +181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a66e6ee45722243bcaa0d3c8115930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 2
+  _moveSpeed: 10
+  _gravityForce: 20
 --- !u!114 &5801207477944468650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +210,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2e31b0526b8ec546b84a8086bff5999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionRange: 3
+--- !u!114 &6730101549366812066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26251936470638301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fc31ebc375479e41a899ed447dba8b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4515733125058264290
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +238,7 @@ GameObject:
   - component: {fileID: 8154019355537099091}
   - component: {fileID: 7774646885393485831}
   - component: {fileID: 3984584557831158112}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}

@@ -6,11 +6,11 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private float _sensitivity = 2.0f; //Чувствительность мыши
     [SerializeField] private float _maxYAngle; //Макс угол вращения по вертикали
-
     private ShakeCamera _cameraShake;
     private float _rotationX = 0.0f;
     private void Start() 
     {
+        EnemyController.DeathScreen += StopMoveCamera;
         _cameraShake = GetComponent<ShakeCamera>();
     }
     private void Update() {
@@ -31,6 +31,10 @@ public class CameraController : MonoBehaviour
     {
         _cameraShake.Shake();
     }
+    }
+    private void StopMoveCamera()
+    {
+        this.enabled = false;
     }
 
 }
