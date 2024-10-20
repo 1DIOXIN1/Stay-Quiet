@@ -1,4 +1,4 @@
 public interface IPatrolBehavior
 {
-    void Patrolling();
+    void Patrol();
 }
