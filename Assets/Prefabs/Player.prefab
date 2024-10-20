@@ -194,6 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   echoWavePrefab: {fileID: 939894421503194521, guid: 131547cdc839dc343aac2f515948adea, type: 3}
   spawnPoint: {fileID: 4432605793609331137}
+  rendererData: {fileID: 11400000, guid: f288ae1f4751b564a96ac7587541f7a2, type: 2}
 --- !u!1 &4515733125058264290
 GameObject:
   m_ObjectHideFlags: 0
