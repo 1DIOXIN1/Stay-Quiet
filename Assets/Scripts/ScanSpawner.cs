@@ -15,6 +15,8 @@ public class ScanSpawner : MonoBehaviour
 
         // Проверяем нажатие клавиши пробел (Space)
         if (Input.GetKeyDown(KeyCode.Space))
+        {
+            EnemyController.DeathScreen += StopUsingEcho;
             if (!isCoolDown)
             {
                 if (rendererData != null)
@@ -26,6 +28,7 @@ public class ScanSpawner : MonoBehaviour
                 StartCoroutine(CoolDownEchoWave());
                 SpawnEchoWave();
             }
+        }
     }
 
     // Метод для спавна сферы эхолокатора
@@ -41,5 +44,10 @@ public class ScanSpawner : MonoBehaviour
         isCoolDown = true;
         yield return new WaitForSeconds(5);
         isCoolDown = false;
+    }
+
+    private void StopUsingEcho()
+    {
+        echoWavePrefab.SetActive(false);
     }
 }
