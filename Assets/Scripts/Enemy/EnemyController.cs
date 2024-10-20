@@ -1,5 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
@@ -33,7 +36,6 @@ public class EnemyController : MonoBehaviour
 
         if (distanceToPlayer <= detectionRange)
         {
-            Debug.Log("123");
             // Стреляем рейкастом в направлении игрока
             RaycastHit hit;
             if (Physics.Raycast(transform.position, player.position - transform.position, out hit,10,layerMask))
@@ -42,13 +44,13 @@ public class EnemyController : MonoBehaviour
                 {
                     if (!isChasing)
                     {
-                        Debug.Log("456");
                         isChasing = true;
                         chaseTimer = chaseDuration;
                         animator.SetInteger("State",1);
                         audioSource.Play();
                     }
                     // Начинаем преследование игрока
+                  
                 }
             }
         }
@@ -56,7 +58,6 @@ public class EnemyController : MonoBehaviour
         // Преследование игрока или возврат на стартовую точку
         if (isChasing)
         {
-            Debug.Log("789");
             navMeshAgent.SetDestination(player.position);
             chaseTimer -= Time.deltaTime;
 
@@ -69,7 +70,6 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            Debug.Log("111");
             if (Vector3.Distance(transform.position, originalPosition) <= navMeshAgent.stoppingDistance+1)
             {
                 // Достигли стартовой точки, устанавливаем анимацию состояния 0
