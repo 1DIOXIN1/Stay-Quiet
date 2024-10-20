@@ -11,16 +11,19 @@ public class Player : MonoBehaviour
         movement = GetComponent<PlayerMovement>();
     }
 
+    // Отключаем движение
     public void DisableMovement()
     {
-        movement.enabled = false;
+        movement.DisableMovement();
     }
 
+    // Включаем движение
     public void EnableMovement()
     {
-        movement.enabled = true;
+        movement.EnableMovement();
     }
 
+    // Устанавливаем видимость игрока
     public void SetVisibility(bool isVisible)
     {
         GetComponent<MeshRenderer>().enabled = isVisible;

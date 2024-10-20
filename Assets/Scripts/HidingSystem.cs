@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class HidingSystem : MonoBehaviour
 {
     private Player player;
