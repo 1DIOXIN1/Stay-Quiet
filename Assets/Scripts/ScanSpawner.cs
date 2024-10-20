@@ -22,9 +22,5 @@ public class ScanSpawner : MonoBehaviour
         {
             Instantiate(echoWavePrefab, spawnPoint.position, spawnPoint.rotation);
         }
-        else
-        {
-            // Debug.LogError("Echo wave prefab or spawn point not assigned!");
-        }
     }
 }
