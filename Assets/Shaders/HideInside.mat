@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: HideInside
-  m_Shader: {fileID: -6465566751694194690, guid: b5d0f7c69170faa47bac2594c8231586, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: e2b236e386c362240a1373fd94d4492d, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
