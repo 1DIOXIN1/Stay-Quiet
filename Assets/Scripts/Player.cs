@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private CharacterController controller;
     private PlayerMovement movement;
     private Inventory inventory; // Ссылка на инвентарь
 
@@ -10,10 +9,11 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        controller = GetComponent<CharacterController>();
         movement = GetComponent<PlayerMovement>();
 
         inventory = GetComponent<Inventory>();
+
+
     }
 
     void Update()

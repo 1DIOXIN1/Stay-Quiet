@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _moveSpeed = 1f;
     [SerializeField] private float _gravityForce = 20f;
     private CharacterController _controller;
+
     private bool canMove = true; // Переменная для контроля движения
 
     void Start()
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
+
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         Vector3 directionMove = transform.right * horizontalInput + transform.forward * verticalInput;

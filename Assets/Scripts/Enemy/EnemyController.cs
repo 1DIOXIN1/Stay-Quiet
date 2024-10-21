@@ -7,8 +7,10 @@ using UnityEngine.UI; // Для UI скримера
 
 public class EnemyController : MonoBehaviour
 {
+    [SerializeField] private AudioSource _screamSound;
+    [SerializeField] private AudioSource _movementSound;
     public Transform player; // Игрок, которого враг будет искать
-    public Canvas screamerCanvas; // UI-элемент для скримера
+    [SerializeField] private GameObject screamerCanvas; // UI-элемент для скримера
     public float detectionRange = 5.0f; // Радиус обнаружения
     public static event Action DeathScreen;
 
@@ -26,14 +28,14 @@ public class EnemyController : MonoBehaviour
         Transform[] patrolPoints = FindObjectsOfType<Transform>().Where(t => t.CompareTag("PatrolPoint")).ToArray();
         patrolBehavior = new PatrolBehavior(agent, patrolPoints);
         enemyAnimator = new EnemyAnimator(animator);
-
-        screamerCanvas.enabled = false; // Скример по умолчанию скрыт
+        _movementSound.Play();
+        screamerCanvas.SetActive(false); // Скример по умолчанию скрыт
     }
 
     private void Update()
     {
         // Если игрок не найден, продолжаем патрулировать
-        if (!isPlayerDetected && screamerCanvas.enabled == false)
+        if (!isPlayerDetected)
         {
             
             patrolBehavior.Patrol();
@@ -49,13 +51,16 @@ public class EnemyController : MonoBehaviour
         if (canDetectPlayer)
         {
             DetectPlayer();
+
         }
+
     }
 
     // Обнаружение игрока
     private void DetectPlayer()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
         if (distanceToPlayer <= detectionRange)
         {
             OnPlayerDetected();
@@ -68,7 +73,7 @@ public class EnemyController : MonoBehaviour
     }
     private void StartDetectPlayer()
     {
-        canDetectPlayer = false;
+        canDetectPlayer = true;
     }
 
 
@@ -82,16 +87,15 @@ public class EnemyController : MonoBehaviour
     // Показ скримера
     private void ShowScreamer()
     {
-        screamerCanvas.enabled = true; // Включаем скример
+        _screamSound.Play();
+        screamerCanvas.SetActive(true); // Включаем скример
         Invoke("ShowDeathScreen", 2f); // Через 2 секунды показываем экран смерти
-        DeathScreen.Invoke();
     }
 
     // Показ экрана смерти
     private void ShowDeathScreen()
     {
         // Можно добавить анимацию смерти или текст
-
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Перезагрузка сцены
     }
 }
