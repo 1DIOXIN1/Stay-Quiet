@@ -287,6 +287,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1160388514}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &50606457 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 284396188269646435, guid: dea3420c87a830043bc3e506ae7c517a, type: 3}
+  m_PrefabInstance: {fileID: 6418662026359182919}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &52675883 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 846067232811117009, guid: eddec5eed47eeb8419f71ebfc02773c1, type: 3}
@@ -3948,11 +3953,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9153611044378783033, guid: 0b9b8bec44bb2a946827712379fd8a26, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.8
+      value: 1.0591458
       objectReference: {fileID: 0}
     - target: {fileID: 9153611044378783033, guid: 0b9b8bec44bb2a946827712379fd8a26, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.7113049
       objectReference: {fileID: 0}
     - target: {fileID: 9153611044378783033, guid: 0b9b8bec44bb2a946827712379fd8a26, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3994,7 +3999,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6081190008161200995, guid: 0b9b8bec44bb2a946827712379fd8a26, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -5143,10 +5149,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sphere
       objectReference: {fileID: 0}
-    - target: {fileID: 3609216232074022800, guid: dea3420c87a830043bc3e506ae7c517a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6130953202685898171, guid: dea3420c87a830043bc3e506ae7c517a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -40.544
@@ -5192,13 +5194,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1835611994}
     - target: {fileID: 8776159285524258059, guid: dea3420c87a830043bc3e506ae7c517a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: _screamSound
+      value: 
+      objectReference: {fileID: 50606457}
     - target: {fileID: 8776159285524258059, guid: dea3420c87a830043bc3e506ae7c517a, type: 3}
       propertyPath: screamerCanvas
       value: 
-      objectReference: {fileID: 8385586}
+      objectReference: {fileID: 8385583}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
