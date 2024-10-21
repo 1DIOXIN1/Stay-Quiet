@@ -31,8 +31,9 @@ public class EnemyController : MonoBehaviour
     private void Update()
     {
         // Если игрок не найден, продолжаем патрулировать
-        if (!isPlayerDetected)
+        if (!isPlayerDetected && screamerCanvas.enabled == false)
         {
+            
             patrolBehavior.Patrol();
             if (GetComponent<NavMeshAgent>().velocity.magnitude > 0.1f)
             {
@@ -70,7 +71,6 @@ public class EnemyController : MonoBehaviour
         screamerCanvas.enabled = true; // Включаем скример
         Invoke("ShowDeathScreen", 2f); // Через 2 секунды показываем экран смерти
         DeathScreen.Invoke();
-        Time.timeScale = 0;
     }
 
     // Показ экрана смерти
