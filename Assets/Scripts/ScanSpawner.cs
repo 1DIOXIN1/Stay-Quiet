@@ -27,7 +27,7 @@ public class ScanSpawner : MonoBehaviour
         // Проверяем нажатие клавиши пробел (Space)
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            EnemyController.DeathScreen += StopUsingEcho;
+            // EnemyController.DeathScreen += StopUsingEcho;
             if (!isCoolDown)
             {
                 if (rendererData != null)
@@ -58,8 +58,8 @@ public class ScanSpawner : MonoBehaviour
         isCoolDown = false;
     }
 
-    private void StopUsingEcho()
-    {
-        Destroy(currentEchoWave);
-    }
+    // private void StopUsingEcho()
+    // {
+    //     DestroyImmediate(currentEchoWave, true);
+    // }
 }
