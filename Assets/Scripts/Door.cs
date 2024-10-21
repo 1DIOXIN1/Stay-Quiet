@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+    [SerializeField] private GameObject _uiWin;
     private bool isLocked = true;
 
     public void Unlock(GameObject obj)
@@ -9,8 +10,8 @@ public class Door : MonoBehaviour
         if (isLocked)
         {
             isLocked = false;
+            _uiWin.SetActive(true);
             Destroy(obj);
-            Debug.Log("Дверь разблокирована!");
         }
     }
 }
