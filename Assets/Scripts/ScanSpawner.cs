@@ -5,6 +5,7 @@ using UnityEngine.Rendering.Universal;
 public class ScanSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject echoWavePrefab;  // Префаб сферы эхолокатора
+    private GameObject currentEchoWave;
     [SerializeField] private Transform spawnPoint;       // Точка, где будет спавниться сфера
     [SerializeField] private UniversalRendererData rendererData;
     
@@ -36,7 +37,8 @@ public class ScanSpawner : MonoBehaviour
     {
         // Проверяем, назначен ли префаб и точка спавна
         if (echoWavePrefab != null && spawnPoint != null)
-            Instantiate(echoWavePrefab, spawnPoint.position, spawnPoint.rotation);
+        currentEchoWave = echoWavePrefab;
+            Instantiate(currentEchoWave, spawnPoint.position, spawnPoint.rotation);
     }
 
     IEnumerator CoolDownEchoWave()
@@ -48,6 +50,6 @@ public class ScanSpawner : MonoBehaviour
 
     private void StopUsingEcho()
     {
-        echoWavePrefab.SetActive(false);
+        currentEchoWave.SetActive(false);
     }
 }
