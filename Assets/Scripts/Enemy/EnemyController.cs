@@ -15,12 +15,14 @@ public class EnemyController : MonoBehaviour
     private IPatrolBehavior patrolBehavior;
     private EnemyAnimator enemyAnimator;
     private bool isPlayerDetected = false;
+    private bool canDetectPlayer = true;
 
     private void Start()
     {
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
         Animator animator = GetComponent<Animator>();
-        
+        HideInteraction.ImHide += StopDetectPlayer;
+        HideInteraction.ImNotHide += StartDetectPlayer;
         Transform[] patrolPoints = FindObjectsOfType<Transform>().Where(t => t.CompareTag("PatrolPoint")).ToArray();
         patrolBehavior = new PatrolBehavior(agent, patrolPoints);
         enemyAnimator = new EnemyAnimator(animator);
@@ -44,8 +46,10 @@ public class EnemyController : MonoBehaviour
                 enemyAnimator.StopWalkAnimation();
             }
         }
-
-        DetectPlayer();
+        if (canDetectPlayer)
+        {
+            DetectPlayer();
+        }
     }
 
     // Обнаружение игрока
@@ -57,6 +61,16 @@ public class EnemyController : MonoBehaviour
             OnPlayerDetected();
         }
     }
+    
+    private void StopDetectPlayer()
+    {
+        canDetectPlayer = false;
+    }
+    private void StartDetectPlayer()
+    {
+        canDetectPlayer = false;
+    }
+
 
     // Действие при обнаружении игрока
     private void OnPlayerDetected()

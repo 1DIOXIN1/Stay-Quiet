@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class HideInteraction : MonoBehaviour
@@ -6,6 +7,8 @@ public class HideInteraction : MonoBehaviour
     private bool _isInRange = false; // Находится ли игрок в зоне укрытия
     private bool _isHiding = false; // Спрятан ли игрок
     private GameObject _player; // Игрок
+    public static event Action ImHide;
+    public static event Action ImNotHide;
 
     private CharacterController _controller;
 
@@ -52,7 +55,8 @@ void EnterHiding()
 {
     if (_controller != null && _controller.enabled)
     {
-        _controller.enabled = false;  // Отключаем контроллер перед перемещением
+        _controller.enabled = false;
+        ImHide.Invoke();
     }
 
     // Перемещаем игрока в укрытие
@@ -64,7 +68,8 @@ void EnterHiding()
 
     if (_controller != null)
     {
-        _controller.enabled = true;  // Включаем контроллер после перемещения
+        _controller.enabled = true;
+        ImNotHide.Invoke();  // Включаем контроллер после перемещения
     }
 
     Debug.Log("Игрок спрятался");
@@ -75,6 +80,7 @@ void ExitHiding()
     if (_controller != null && _controller.enabled)
     {
         _controller.enabled = false;  // Отключаем контроллер перед перемещением
+        ImNotHide.Invoke();
     }
 
     // Возвращаем игрока на исходную позицию
