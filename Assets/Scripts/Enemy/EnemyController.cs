@@ -68,7 +68,7 @@ public class EnemyController : MonoBehaviour
     }
     private void StartDetectPlayer()
     {
-        canDetectPlayer = false;
+        canDetectPlayer = true;
     }
 
 
