@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.SocialPlatforms;
 
 public class CameraController : MonoBehaviour
 {
@@ -10,7 +8,6 @@ public class CameraController : MonoBehaviour
     private float _rotationX = 0.0f;
     private void Start() 
     {
-        EnemyController.DeathScreen += StopMoveCamera;
         _cameraShake = GetComponent<ShakeCamera>();
     }
     private void Update() {
@@ -31,10 +28,6 @@ public class CameraController : MonoBehaviour
     {
         _cameraShake.Shake();
     }
-    }
-    private void StopMoveCamera()
-    {
-        this.enabled = false;
     }
 
 }

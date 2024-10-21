@@ -3,7 +3,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement; // Для перезагрузки сцены
-using UnityEngine.UI; // Для UI скримера
 
 public class EnemyController : MonoBehaviour
 {
@@ -19,6 +18,7 @@ public class EnemyController : MonoBehaviour
     private bool isPlayerDetected = false;
     private bool canDetectPlayer = true;
 
+    [Obsolete]
     private void Start()
     {
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
@@ -88,6 +88,7 @@ public class EnemyController : MonoBehaviour
     private void ShowScreamer()
     {
         _screamSound.Play();
+        isPlayerDetected = false;
         screamerCanvas.SetActive(true); // Включаем скример
         Invoke("ShowDeathScreen", 2f); // Через 2 секунды показываем экран смерти
     }
