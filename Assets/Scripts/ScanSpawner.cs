@@ -9,7 +9,17 @@ public class ScanSpawner : MonoBehaviour
     [SerializeField] private Transform spawnPoint;       // Точка, где будет спавниться сфера
     [SerializeField] private UniversalRendererData rendererData;
     
-    private bool isCoolDown = false; 
+    private bool isCoolDown = false;
+
+    private void Start()
+    {
+        if (rendererData != null)
+            // Ищем FullScreenPassRendererFeature среди rendererFeatures
+            for (int i = 0; i < rendererData.rendererFeatures.Count; i++)
+                if (rendererData.rendererFeatures[i] is FullScreenPassRendererFeature)
+                    // Отключаем FullScreenPassRendererFeature
+                    rendererData.rendererFeatures[i].SetActive(false);
+    }
 
     void Update()
     {
@@ -50,6 +60,6 @@ public class ScanSpawner : MonoBehaviour
 
     private void StopUsingEcho()
     {
-        currentEchoWave.SetActive(false);
+        Destroy(currentEchoWave);
     }
 }
