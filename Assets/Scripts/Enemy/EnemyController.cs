@@ -8,7 +8,7 @@ using UnityEngine.UI; // Для UI скримера
 public class EnemyController : MonoBehaviour
 {
     public Transform player; // Игрок, которого враг будет искать
-    public Canvas screamerCanvas; // UI-элемент для скримера
+    [SerializeField] private GameObject screamerCanvas; // UI-элемент для скримера
     public float detectionRange = 5.0f; // Радиус обнаружения
     public static event Action DeathScreen;
 
@@ -27,13 +27,13 @@ public class EnemyController : MonoBehaviour
         patrolBehavior = new PatrolBehavior(agent, patrolPoints);
         enemyAnimator = new EnemyAnimator(animator);
 
-        screamerCanvas.enabled = false; // Скример по умолчанию скрыт
+        screamerCanvas.SetActive(false); // Скример по умолчанию скрыт
     }
 
     private void Update()
     {
         // Если игрок не найден, продолжаем патрулировать
-        if (!isPlayerDetected && screamerCanvas.enabled == false)
+        if (!isPlayerDetected)
         {
             
             patrolBehavior.Patrol();
@@ -82,7 +82,7 @@ public class EnemyController : MonoBehaviour
     // Показ скримера
     private void ShowScreamer()
     {
-        screamerCanvas.enabled = true; // Включаем скример
+        screamerCanvas.SetActive(true); // Включаем скример
         Invoke("ShowDeathScreen", 2f); // Через 2 секунды показываем экран смерти
         DeathScreen.Invoke();
     }
