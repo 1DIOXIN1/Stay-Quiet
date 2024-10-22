@@ -6,12 +6,10 @@ using UnityEngine.SceneManagement; // Для перезагрузки сцены
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private AudioSource _screamSound;
     [SerializeField] private AudioSource _movementSound;
     public Transform player; // Игрок, которого враг будет искать
-    [SerializeField] private GameObject screamerCanvas; // UI-элемент для скримера
     public float detectionRange = 5.0f; // Радиус обнаружения
-    public static event Action DeathScreen;
+    public static event Action Death;
 
     private IPatrolBehavior patrolBehavior;
     private EnemyAnimator enemyAnimator;
@@ -29,7 +27,6 @@ public class EnemyController : MonoBehaviour
         patrolBehavior = new PatrolBehavior(agent, patrolPoints);
         enemyAnimator = new EnemyAnimator(animator);
         _movementSound.Play();
-        screamerCanvas.SetActive(false); // Скример по умолчанию скрыт
     }
 
     private void Update()
@@ -51,7 +48,6 @@ public class EnemyController : MonoBehaviour
         if (canDetectPlayer)
         {
             DetectPlayer();
-
         }
 
     }
@@ -82,14 +78,12 @@ public class EnemyController : MonoBehaviour
     {
         isPlayerDetected = true;
         ShowScreamer();
+        Invoke("ShowDeathScreen", 2f); // Через 2 секунды показываем экран смерти
     }
 
     // Показ скримера
     private void ShowScreamer()
     {
-        _screamSound.Play();
-        isPlayerDetected = false;
-        screamerCanvas.SetActive(true); // Включаем скример
         Invoke("ShowDeathScreen", 2f); // Через 2 секунды показываем экран смерти
     }
 

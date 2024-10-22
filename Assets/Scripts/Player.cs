@@ -2,25 +2,22 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private PlayerMovement movement;
-    private Inventory inventory; // Ссылка на инвентарь
+    private PlayerMovement _movement;
+    private Inventory _inventory; // Ссылка на инвентарь
 
-    public float interactionRange = 3.0f; // Дистанция взаимодействия
+    [SerializeField] private float interactionRange = 3.0f; // Дистанция взаимодействия
 
     void Start()
     {
-        movement = GetComponent<PlayerMovement>();
-
-        inventory = GetComponent<Inventory>();
-
-
+        _movement = GetComponent<PlayerMovement>();
+        _inventory = GetComponent<Inventory>();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            TryInteract(inventory); // Подбор или использование предмета
+            TryInteract(_inventory); // Подбор или использование предмета
         }
     }
 
@@ -59,13 +56,13 @@ public class Player : MonoBehaviour
     // Отключаем движение
     public void DisableMovement()
     {
-        movement.DisableMovement();
+        _movement.DisableMovement();
     }
 
     // Включаем движение
     public void EnableMovement()
     {
-        movement.EnableMovement();
+        _movement.EnableMovement();
     }
 
     // Устанавливаем видимость игрока
